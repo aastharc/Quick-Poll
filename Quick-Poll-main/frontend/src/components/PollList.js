@@ -7,7 +7,7 @@ const PollList = ({ onSelectPoll }) => {
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
     const fetchPolls = async () => {
         try {
-            const response = await fetch(`${backendUrl}/polls`);
+            const response = await fetch(`https://quick-poll-1.onrender.com/polls`);
             const data = await response.json();
             setPolls(data);
         } catch (error) {

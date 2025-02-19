@@ -10,8 +10,17 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
+const allowedOrigins = [
+  "https://quick-poll-azure.vercel.app/",  // ✅ Replace with your deployed frontend URL
+  "http://localhost:3000" // ✅ Keep this for local testing
+];
 
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 // Connect to MongoDB (using env variable or default local connection)
 const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/quickpoll';
 mongoose
